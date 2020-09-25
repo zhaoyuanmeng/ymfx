@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div id="app">
+
+        <p v-text="msg"></p>
+        <p v-text="msg"></p>
+        <p v-text="msg"></p>
+        <p v-html="tag"></p>
+        <p>大家好我是：{{name}}</p>
+        <p>车品牌：{{car.brand}}</p>
+        <p>车颜色：{{car.color}}</p>
+        <button v-on:click="clickFn">点击</button>
+        <input type="text" v-model="car.brand">
+    </div>
+    <script src="watch.js"></script>
+    <script src="observe.js"></script>
+    <script src="compile.js"></script>
+    <script src="vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "hhhh",
+                tag:"<h1>hahaha</h1>",
+                name:"zyd",
+                car:{
+                    brand:"大众",
+                    color:"red"
+                }
+            },
+            methods:{
+                clickFn(){
+                    // 这里因为vue内部是$data属性
+                    console.log(this.$data.msg)
+                    // console.log('被点击了！！')
+                }
+            }
+        })
+        console.log(vm)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <script >
+
+        const a = {
+            name:"zyd",
+            age:{
+                vb:"asd"
+            }
+        }
+        // 传递一个对象的属性也会改变值 只要它本身就是引用类型
+        function test(a){
+
+           a.vb = 'sd'
+        }
+        test(a.age)
+        console.log(a)
+        Object.defineProperty(obj,'a',{
+            configurable:true,//表示属性可以配置  false就是不能再更改了
+            enumerable:true, //表示这个属性可以遍历 就是可以打印出这个属性的值
+            get(){
+                // 每次获取对象的这个属性的时候，就会被触发
+               // return obj.a  会死循环
+
+               return temp
+            },
+            set(newvalue){
+                // 每次设置这个对象属性的时候就会被set方法劫持到
+                // 设置的值也会被劫持到
+                temp = newvalue
+            }
+        })
+        obj.a = "ada"
+        console.log(obj.a)
+    </script>
+</body>
+</html>
